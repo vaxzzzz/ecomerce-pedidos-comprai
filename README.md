@@ -6,9 +6,19 @@
 ## Equipe / Squad
 
 | Nome | Papel na Aula 01 |
-|---|---|
+| _(Rhuan)_ | 
 | _(Victor Vaz)_ | Responsável do dia |
 | _(Kauã Henrique Frenedozo)_ | |
+
+| Nome | Papel na Aula 02 |
+| _(Rhuan)_ | Responsável do dia | 
+| _(Victor Vaz)_ | |
+| _(Kauã Henrique Frenedozo)_ | |
+
+| Nome | Papel na Aula 03 |
+| _(Rhuan)_ | 
+| _(Victor Vaz)_ |  |
+| _(Kauã Henrique Frenedozo)_ | Responsável do dia |
 
 ## Descrição do desafio
 
@@ -62,8 +72,8 @@ _(Preencher a partir das próximas aulas, conforme o projeto evoluir.)_
 
 | Aula | Entrega |
 |---|---|
-| 01 | Repositório criado, estruturado, com README e commit inicial |
-| 02 | Fluxo de branches e primeiro Pull Request revisado |
+| 01 | Repositório criado, estruturado, com README e commit inicial | OK
+| 02 | Fluxo de branches e primeiro Pull Request revisado | OK
 | 03 | Classe utilitária (Utils) do domínio |
 | 04 | Classes de domínio inicial (Produto, Cliente, Pedido, ItemPedido) |
 | 05 | Encapsulamento e abstração aplicados |
