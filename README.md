@@ -49,9 +49,9 @@ DIA 04 - /08/26
 
 ## Descrição do desafio
 
-_(Resuma aqui, com suas palavras, o desafio: uma equipe de desenvolvimento recebeu a demanda de
-construir um sistema de gestão de pedidos para um e-commerce, contemplando cadastro de produtos,
-clientes, pedidos e processamento de pagamentos.)_
+O desafio consiste no desenvolvimento de um sistema de gestão de pedidos para um e-commerce, permitindo o cadastro e gerenciamento de produtos e clientes, 
+criação e acompanhamento de pedidos e processamento de diferentes formas de pagamento (ficticias), como cartão, boleto e Pix. O projeto também deverá contemplar testes automatizados,
+API REST e integração contínua durante sua evolução.
 
 ## Funcionalidades previstas
 
@@ -99,8 +99,8 @@ _(Preencher a partir das próximas aulas, conforme o projeto evoluir.)_
 
 | Aula | Entrega |
 |---|---|
-| 01 | Repositório criado, estruturado, com README e commit inicial | OK
-| 02 | Fluxo de branches e primeiro Pull Request revisado | OK
+| 01 | Repositório criado, estruturado, com README e commit inicial | **OK**
+| 02 | Fluxo de branches e primeiro Pull Request revisado | **OK**
 | 03 | Classe utilitária (Utils) do domínio |
 | 04 | Classes de domínio inicial (Produto, Cliente, Pedido, ItemPedido) |
 | 05 | Encapsulamento e abstração aplicados |
@@ -118,9 +118,9 @@ _(Preencher a partir das próximas aulas, conforme o projeto evoluir.)_
 
 ## Combinado da equipe (ética e convivência)
 
-1. _(regra 1 definida pela equipe)_
-2. _(regra 2 definida pela equipe)_
-3. _(regra 3 definida pela equipe)_
+1. Manter uma comunicação clara e respeitosa entre os integrantes da equipe.
+2. Criar branches e Pull Requests para organizar e revisar as alterações antes de integrá-las à main.
+3. Cumprir as tarefas definidas para cada aula e comunicar a equipe sobre eventuais dificuldades ou atrasos.
 
 ## Licença
 
