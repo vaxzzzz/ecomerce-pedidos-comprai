@@ -10,29 +10,41 @@
 | _(Victor Vaz)_ | Responsável do dia |
 | _(Kauã Henrique Frenedozo)_ | |
 
-DIA 01 - 07/08/26
-Introdução ao Github
-projeto criado
-branches
-main criada e segura ( configurações) 
-
+DIA 01 — 07/08/26
+Introdução ao GitHub e organização inicial do projeto.
+Criação do repositório e configuração da branch main.
+Configuração de regras de proteção da branch main.
+Estruturação inicial do projeto e realização do primeiro commit.
+---------------------------------//----------------------------------
+DIA 02 — 14/08/26
 | Nome | Papel na Aula 02 |
 | _(Rhuan)_ | Responsável do dia | 
 | _(Victor Vaz)_ | |
 | _(Kauã Henrique Frenedozo)_ | |
 
-DIA 02 - 14/08/26
-criação de pull requests e criação de branchs (passo a passo) junto com o professor
-
+DIA 02 — 14/08/26
+Introdução ao fluxo de trabalho com branches no Git.
+Criação e gerenciamento de branches para desenvolvimento.
+Aprendizado e aplicação do fluxo de Pull Requests.
+Criação do primeiro Pull Request e revisão das alterações junto ao professor.
+---------------------------------//----------------------------------
 DIA 03 - 21/08/26
 | Nome | Papel na Aula 03 |
 | _(Rhuan)_ | 
 | _(Victor Vaz)_ |  |
 | _(Kauã Henrique Frenedozo)_ | Responsável do dia |
 
-1. conceitos basicos de bibliotecas como .math e métodos como .equals entre outros
-2. Criação da classe pedidos com java e seus respectivos métodos
-
+DIA 03 — 21/08/26
+Revisão de conceitos básicos da linguagem Java, incluindo bibliotecas, métodos e o uso de .equals().
+Introdução à criação e organização de classes no projeto.
+Desenvolvimento da classe Pedido em Java.
+Implementação dos métodos relacionados à classe Pedido.
+---------------------------------//----------------------------------
+DIA 04 - /08/26
+| Nome | Papel na Aula 03 |
+| _(Rhuan)_ | 
+| _(Victor Vaz)_ |  |
+| _(Kauã Henrique Frenedozo)_ | |
 
 
 ## Descrição do desafio
