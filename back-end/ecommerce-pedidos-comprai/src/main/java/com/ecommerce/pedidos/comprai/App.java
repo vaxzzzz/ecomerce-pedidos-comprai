@@ -1,4 +1,4 @@
-package com.ecommerce.pedidos..comprai;
+package com.ecommerce.pedidos.comprai;
 
 /**
  * Hello world!
