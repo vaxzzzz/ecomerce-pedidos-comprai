@@ -10,15 +10,30 @@
 | _(Victor Vaz)_ | Responsável do dia |
 | _(Kauã Henrique Frenedozo)_ | |
 
+DIA 01 - 07/08/26
+Introdução ao Github
+projeto criado
+branches
+main criada e segura ( configurações) 
+
 | Nome | Papel na Aula 02 |
 | _(Rhuan)_ | Responsável do dia | 
 | _(Victor Vaz)_ | |
 | _(Kauã Henrique Frenedozo)_ | |
 
+DIA 02 - 14/08/26
+criação de pull requests e criação de branchs (passo a passo) junto com o professor
+
+DIA 03 - 21/08/26
 | Nome | Papel na Aula 03 |
 | _(Rhuan)_ | 
 | _(Victor Vaz)_ |  |
 | _(Kauã Henrique Frenedozo)_ | Responsável do dia |
+
+1. conceitos basicos de bibliotecas como .math e métodos como .equals entre outros
+2. Criação da classe pedidos com java e seus respectivos métodos
+
+
 
 ## Descrição do desafio
 
