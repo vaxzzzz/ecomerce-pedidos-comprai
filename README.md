@@ -111,7 +111,7 @@ ecommerce-pedidos-NOMEDASQUAD/
 
 ▶️ Como rodar o projeto
 
-(Preencher a partir das próximas aulas, conforme o projeto evoluir.)
+Preencher a partir das próximas aulas, conforme o projeto evoluir.
 
 🗺️ Roadmap do projeto
 Aula	Entrega	Status
