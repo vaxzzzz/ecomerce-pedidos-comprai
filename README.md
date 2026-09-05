@@ -43,8 +43,20 @@ Implementação dos métodos relacionados à classe Pedido.
 DIA 04 - /08/26
 | Nome | Papel na Aula 03 |
 | _(Rhuan)_ | 
-| _(Victor Vaz)_ |  |
+| _(Victor Vaz)_ | Responsável do dia |
 | _(Kauã Henrique Frenedozo)_ | |
+
+NADA FOI INFORMADO
+
+DIA 05 - 04/09/26
+| Nome | Papel na Aula 03 |
+| _(Rhuan)_ | 
+| _(Victor Vaz)_ |  |
+| _(Kauã Henrique Frenedozo)_ | Responsável do dia |
+
+Criação da classe Cliente
+Criação da classe Pessoa
+Encapsulamento e Herança foram ensinadas pelo professor
 
 
 ## Descrição do desafio
