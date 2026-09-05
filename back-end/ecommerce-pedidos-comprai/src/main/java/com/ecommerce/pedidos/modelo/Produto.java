@@ -1,4 +1,6 @@
+
 package com.ecommerce.pedidos.modelo;
+
 public class Produto {
     private String codigo;
     private String nome;
@@ -7,34 +9,66 @@ public class Produto {
     private int quantidadeEmEstoque;
     private boolean ativo;
 
-    public Produto(){}
+    public Produto() {
+    }
 
-    public Produto(String codigo, String nome, String descricao, double preco, int quantidadeEmEstoque){
-        this.codigo = codigo;
+    public Produto(String codigo, String nome, String descricao, double preco, int quantidadeEmEstoque) {
+        setCodigo(codigo);
         this.nome = nome;
         this.descricao = descricao;
-        this.preco = preco;
+        setPreco(preco);
         this.quantidadeEmEstoque = quantidadeEmEstoque;
         this.ativo = true;
     }
 
-    public String getNome(){
+    public String getNome() {
         return this.nome;
     }
 
-    public boolean isAtivo(){
+    public boolean isAtivo() {
         return this.ativo;
     }
-    public boolean temEstoqueDisponivel(int quantidadeDesejada){
+
+    public double getPreco() {
+        return this.preco;
+    }
+
+    public void setCodigo(String codigo) {
+        if (codigo == null || codigo.isEmpty()) {
+            throw new IllegalArgumentException("O código não pode ser vazio.");
+        }
+
+        this.codigo = codigo;
+    }
+
+    public void setPreco(double preco) {
+        if (preco <= 0) {
+            throw new IllegalArgumentException("O preço deve ser maior que zero.");
+        }
+
+        this.preco = preco;
+    }
+
+    public boolean temEstoqueDisponivel(int quantidadeDesejada) {
         return ativo && quantidadeEmEstoque >= quantidadeDesejada;
     }
 
     @Override
-    public String toString(){
-        return String.format("[%-10s] %-15s R$ %9.2f (%6d em estoque)", codigo, nome, preco, quantidadeEmEstoque);
+    public String toString() {
+        return String.format(
+                "[%-10s] %-15s R$ %9.2f (%6d em estoque)",
+                codigo,
+                nome,
+                preco,
+                quantidadeEmEstoque);
     }
 
-    public void baixarEstoque(int quantidade){
-        this.quantidadeEmEstoque = quantidadeEmEstoque -= quantidade;
+    public void baixarEstoque(int quantidade) {
+        if (quantidade > quantidadeEmEstoque) {
+            throw new IllegalArgumentException(
+                    "Estoque insuficiente. Estoque disponível: " + quantidadeEmEstoque);
+        }
+
+        this.quantidadeEmEstoque = quantidadeEmEstoque - quantidade;
     }
 }
