@@ -65,7 +65,9 @@ Java
 Maven
 Git / GitHub
 (demais tecnologias serão adicionadas ao longo do semestre: JUnit, Spring Boot, banco de dados, GitHub Actions...)
-Estrutura de pastas
+Estrutura de pastas:
+
+```pastas
 ecommerce-pedidos-NOMEDASQUAD/
 ├── src/
 │   ├── main/
@@ -81,6 +83,8 @@ ecommerce-pedidos-NOMEDASQUAD/
 ├── pom.xml
 ├── README.md
 └── .gitignore
+```
+
 Como rodar o projeto
 (Preencher a partir das próximas aulas, conforme o projeto evoluir.)
 
