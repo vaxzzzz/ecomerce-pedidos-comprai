@@ -1,0 +1,31 @@
+package com.ecommerce.pedidos.modelo;
+
+public class Endereco {
+
+    private String rua;
+    private String numero;
+    private String cidade;
+
+    public Endereco(String rua, String numero, String cidade) {
+        this.rua = rua;
+        this.numero = numero;
+        this.cidade = cidade;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    @Override
+    public String toString() {
+        return rua + ", " + numero + " - " + cidade;
+    }
+}
