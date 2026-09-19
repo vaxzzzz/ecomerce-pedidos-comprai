@@ -89,6 +89,12 @@ Diagrama do modelo de dominio:
 
 ![Diagrama do projeto](img/Modelo_de_dominio.png)
 
+Alterações futuras no diagrama:
+ -identificar relações
+ -adicionar relação funiconarios
+ -separar metodos de pagamento em diferentes classes
+ 
+
 Como rodar o projeto
 (Preencher a partir das próximas aulas, conforme o projeto evoluir.)
 
