@@ -49,6 +49,13 @@ Criação da classe Cliente Criação da classe Pessoa Encapsulamento e Herança
 
 ---------------------------------//---------------------------------- 
 
+
+DIA 07 - 25/09/26 | Nome | Papel na Aula 07 | | (Rhuan) | | (Victor Vaz) | | Responsável do dia | | (Kauã Henrique Frenedozo) 
+Criação e estrutura de polimorfismo
+
+
+---------------------------------//---------------------------------- 
+
 Descrição do desafio
 O desafio consiste no desenvolvimento de um sistema de gestão de pedidos para um e-commerce, permitindo o cadastro e gerenciamento de produtos e clientes, criação e acompanhamento de pedidos e processamento de diferentes formas de pagamento (ficticias), como cartão, boleto e Pix. O projeto também deverá contemplar testes automatizados, API REST e integração contínua durante sua evolução.
 
