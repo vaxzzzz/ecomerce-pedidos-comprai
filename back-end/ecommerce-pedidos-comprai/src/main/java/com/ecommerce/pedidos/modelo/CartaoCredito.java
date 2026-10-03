@@ -1,6 +1,10 @@
-import com.ecommerce.pedidos.modelo.FormaPagamento;
+package com.ecommerce.pedidos.modelo;
 
-public class CartaoCredito {
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.Date;
+
+public class CartaoCredito extends FormaPagamento {
     private String numeroDoCartao;
 
     public CartaoCredito(BigDecimal valor, Date dataDeVencimento, String numeroDoCartao) {

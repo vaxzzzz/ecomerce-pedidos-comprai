@@ -1,7 +1,5 @@
 package com.ecommerce.pedidos.modelo;
 
-import java.math.BigDecimal;
-
 public class Endereco {
     private String cep;
     private String rua;
@@ -10,7 +8,7 @@ public class Endereco {
     private String cidade;
     private String estado;
 
-    public Endereco (String cep, String rua, String numero, String bairro, String cidade, String estado) {
+    public Endereco(String cep, String rua, String numero, String bairro, String cidade, String estado) {
         this.cep = cep;
         this.rua = rua;
         this.numero = numero;
@@ -72,5 +70,4 @@ public class Endereco {
         return "Endereco [cep=" + cep + ", rua=" + rua + ", numero=" + numero + ", bairro=" + bairro + ", cidade="
                 + cidade + ", estado=" + estado + "]";
     }
-    
 }

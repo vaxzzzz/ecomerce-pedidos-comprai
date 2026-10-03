@@ -1,11 +1,10 @@
-package com.ecommerce.pedidos.modelo.;
+package com.ecommerce.pedidos.modelo;
 
 public class ItemPedido {
     private Produto produto;
     private int quantidade;
     private double precoPraticado;
 
-    // Construtor que utiliza os métodos set para inicializar os atributos
     public ItemPedido(Produto produto, int quantidade, double precoPraticado) {
         setProduto(produto);
         setQuantidade(quantidade);
@@ -46,6 +45,6 @@ public class ItemPedido {
     }
 
     public double calcularSubtotal() {
-        return this.precoPraticado * this.quantidade; 
+        return this.precoPraticado * this.quantidade;
     }
 }

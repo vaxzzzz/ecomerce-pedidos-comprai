@@ -1,10 +1,12 @@
 package com.ecommerce.pedidos.modelo;
 
-public class Pix extends FormaPagamento implements ProcessadorPagamento {
+import com.ecommerce.pedidos.modelo.pagamento.ProcessadorPagamento;
+import java.math.BigDecimal;
+
+public class Pix implements ProcessadorPagamento {
     private final String chave;
 
     public Pix(String chave) {
-        super(valor, dataDeVencimento);
         this.chave = chave;
     }
 

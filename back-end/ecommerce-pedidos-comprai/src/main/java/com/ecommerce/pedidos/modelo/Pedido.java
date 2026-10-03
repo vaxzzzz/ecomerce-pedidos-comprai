@@ -1,3 +1,6 @@
+package com.ecommerce.pedidos.modelo;
+
+import com.ecommerce.pedidos.modelo.pagamento.ProcessadorPagamento;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,10 +12,12 @@ public class Pedido {
     private final String numero;
     private final Cliente cliente;
     private final List<ItemPedido> itens = new ArrayList<>();
-    private FormaPagamento formaPagamento;
+    private ProcessadorPagamento formaPagamento;
+    private SituacaoDoPedido situacao = SituacaoDoPedido.ABERTO;
+    private String comprovante;
 
     public Pedido(String numero, Cliente cliente) {
-        if (numero == null || numero.blank()) {
+        if (numero == null || numero.isBlank()) {
             throw new IllegalArgumentException("Número do pedido é obrigatório");
         }
         this.cliente = Objects.requireNonNull(cliente, "Pedido exige um cliente");
@@ -38,10 +43,11 @@ public class Pedido {
         }
         if (itens.isEmpty()) {
             throw new IllegalStateException("Pedido sem itens não pode ser pago");
-
         }
+
         boolean aprovado = processador.processar(calcularValorTotal());
         if (aprovado) {
+            this.formaPagamento = processador;
             this.situacao = SituacaoDoPedido.PAGO;
             this.comprovante = processador.getComprovante();
         }
@@ -51,7 +57,7 @@ public class Pedido {
     public BigDecimal calcularValorTotal() {
         BigDecimal total = BigDecimal.ZERO;
         for (ItemPedido item : itens) {
-            total = total.add(item.calcularSubtotal());
+            total = total.add(BigDecimal.valueOf(item.calcularSubtotal()));
         }
         return total;
     }
@@ -68,7 +74,15 @@ public class Pedido {
         return Collections.unmodifiableList(itens);
     }
 
-    public FormaPagamento getFormaPagamento() {
+    public ProcessadorPagamento getFormaPagamento() {
         return formaPagamento;
+    }
+
+    public SituacaoDoPedido getSituacao() {
+        return situacao;
+    }
+
+    public String getComprovante() {
+        return comprovante;
     }
 }

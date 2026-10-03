@@ -1,18 +1,19 @@
 package com.ecommerce.pedidos.modelo;
 
 public class Cliente extends Pessoa {
-
     private String email;
     private String telefone;
+    private Endereco endereco;
 
-    public Cliente(String nome, String cpf, String email) {
+    public Cliente(String nome, String cpf, String email, Endereco endereco, String telefone) {
         super(nome, cpf);
         setEmail(email);
         setTelefone(telefone);
+        setEndereco(endereco);
     }
-    @Override
-    public String getIdentificacao() {
-        return getNome() + " (CPF " + getDocumento() + ")";
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
@@ -27,11 +28,6 @@ public class Cliente extends Pessoa {
         this.email = email.trim();
     }
 
-
-    public String getEmail() {
-        return email;
-    }
-
     public String getTelefone() {
         return telefone;
     }
@@ -40,5 +36,16 @@ public class Cliente extends Pessoa {
         this.telefone = telefone;
     }
 
-    
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    @Override
+    public String getIdentificacao() {
+        return getNome() + " (CPF " + getDocumento() + ")";
+    }
 }
