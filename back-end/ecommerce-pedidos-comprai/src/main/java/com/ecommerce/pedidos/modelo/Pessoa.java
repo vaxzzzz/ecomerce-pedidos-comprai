@@ -1,5 +1,7 @@
 package com.ecommerce.pedidos.modelo;
 
+import com.ecommerce.pedidos.util.Validador;
+
 public abstract class Pessoa {
 
     private String nome;
@@ -11,32 +13,15 @@ public abstract class Pessoa {
     }
 
     public void setNome(String nome) {
-        if (nome == null || nome.isBlank()) {
-            throw new IllegalArgumentException("Nome é obrigatório");
-        }
-
-        this.nome = nome.trim();
+        this.nome = Validador.textoObrigatorio(nome, "Nome");
     }
 
     public void setDocumento(String documento) {
-        if (documento == null || documento.isBlank()) {
-            throw new IllegalArgumentException("Documento é obrigatório");
-        }
-
-        if (!documento.matches("\\d+")) {
-            throw new IllegalArgumentException("Documento deve conter apenas números");
-        }
-
-        this.documento = documento;
+        this.documento = Validador.somenteNumeros(documento, "Documento");
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public String getDocumento() {
-        return documento;
-    }
+    public String getNome() { return nome; }
+    public String getDocumento() { return documento; }
 
     public abstract String getIdentificacao();
 }

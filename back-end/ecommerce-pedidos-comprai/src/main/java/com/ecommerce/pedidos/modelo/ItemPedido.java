@@ -1,5 +1,7 @@
 package com.ecommerce.pedidos.modelo;
 
+import com.ecommerce.pedidos.util.Validador;
+
 public class ItemPedido {
     private Produto produto;
     private int quantidade;
@@ -11,40 +13,26 @@ public class ItemPedido {
         setPrecoPraticado(precoPraticado);
     }
 
-    public Produto getProduto() {
-        return produto;
-    }
+    public Produto getProduto() { return produto; }
 
     public void setProduto(Produto produto) {
-        if (produto == null) {
-            throw new IllegalArgumentException("O produto não pode ser nulo.");
-        }
-        this.produto = produto;
+        this.produto = Validador.naoNulo(produto, "Produto");
     }
 
-    public int getQuantidade() {
-        return quantidade;
-    }
+    public int getQuantidade() { return quantidade; }
 
     public void setQuantidade(int quantidade) {
-        if (quantidade <= 0) {
-            throw new IllegalArgumentException("A quantidade deve ser maior que zero.");
-        }
-        this.quantidade = quantidade;
+        this.quantidade = Validador.quantidadePositiva(quantidade, "Quantidade");
     }
 
-    public double getPrecoPraticado() {
-        return precoPraticado;
-    }
+    public double getPrecoPraticado() { return precoPraticado; }
 
     public void setPrecoPraticado(double precoPraticado) {
-        if (precoPraticado < 0) {
-            throw new IllegalArgumentException("O preço praticado não pode ser negativo.");
-        }
-        this.precoPraticado = precoPraticado;
+        this.precoPraticado =
+                Validador.precoNaoNegativo(precoPraticado, "Preço praticado");
     }
 
     public double calcularSubtotal() {
-        return this.precoPraticado * this.quantidade;
+        return precoPraticado * quantidade;
     }
 }
