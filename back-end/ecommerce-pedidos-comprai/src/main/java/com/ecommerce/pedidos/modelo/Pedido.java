@@ -1,11 +1,16 @@
 package com.ecommerce.pedidos.modelo;
 
+import com.ecommerce.pedidos.excecao.ECommerceException;
+import com.ecommerce.pedidos.excecao.EstoqueInsuficienteException;
+import com.ecommerce.pedidos.excecao.PagamentoRecusadoException;
+import com.ecommerce.pedidos.excecao.PedidoJaPagoException;
 import com.ecommerce.pedidos.modelo.pagamento.ProcessadorPagamento;
+import com.ecommerce.pedidos.util.Validador;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class Pedido {
 
@@ -17,41 +22,69 @@ public class Pedido {
     private String comprovante;
 
     public Pedido(String numero, Cliente cliente) {
-        if (numero == null || numero.isBlank()) {
-            throw new IllegalArgumentException("Número do pedido é obrigatório");
-        }
-        this.cliente = Objects.requireNonNull(cliente, "Pedido exige um cliente");
-        this.numero = numero;
+        this.numero = Validador.textoObrigatorio(numero, "Número do pedido");
+        this.cliente = Validador.naoNulo(cliente, "Cliente");
     }
 
-    public void adicionarItem(Produto produto, int quantidade) {
-        Objects.requireNonNull(produto, "Produto é obrigatório");
+    public void adicionarItem(Produto produto, int quantidade)
+            throws EstoqueInsuficienteException {
 
-        if (quantidade <= 0) {
-            throw new IllegalArgumentException("A quantidade deve ser maior que zero");
+        Validador.naoNulo(produto, "Produto");
+        Validador.quantidadePositiva(quantidade, "Quantidade");
+
+        if (!produto.isAtivo()) {
+            throw new IllegalStateException(
+                    "O produto " + produto.getNome()
+                            + " está inativo e não pode ser adicionado ao pedido.");
         }
-        if (!produto.temEstoqueDisponivel(quantidade)) {
-            throw new IllegalStateException("Estoque insuficiente: " + produto.getNome());
+
+        if (quantidade > produto.getQuantidadeEmEstoque()) {
+            throw new EstoqueInsuficienteException(
+                    produto.getCodigo(),
+                    quantidade,
+                    produto.getQuantidadeEmEstoque());
         }
 
         itens.add(new ItemPedido(produto, quantidade, produto.getPreco()));
     }
 
-    public boolean pagar(ProcessadorPagamento processador) {
-        if (processador == null) {
-            throw new IllegalArgumentException("Forma de pagamento é obrigatória");
-        }
-        if (itens.isEmpty()) {
-            throw new IllegalStateException("Pedido sem itens não pode ser pago");
+    public boolean pagar(ProcessadorPagamento processador)
+            throws PagamentoRecusadoException {
+
+        Validador.naoNulo(processador, "Forma de pagamento");
+
+        if (situacao == SituacaoDoPedido.PAGO) {
+            throw new PedidoJaPagoException(numero);
         }
 
-        boolean aprovado = processador.processar(calcularValorTotal());
-        if (aprovado) {
+        if (itens.isEmpty()) {
+            throw new IllegalStateException(
+                    "O pedido está vazio e não pode ser pago. Adicione pelo menos um item.");
+        }
+
+        BigDecimal total = calcularValorTotal();
+
+        try {
+            boolean aprovado = processador.processar(total);
+
+            if (!aprovado) {
+                throw new PagamentoRecusadoException(
+                        processador.getDescricao(), total);
+            }
+
             this.formaPagamento = processador;
             this.situacao = SituacaoDoPedido.PAGO;
             this.comprovante = processador.getComprovante();
+            return true;
+
+        } catch (PagamentoRecusadoException e) {
+            throw e;
+        } catch (RuntimeException e) {
+            // Tradução da falha técnica do processador para uma exceção de negócio,
+            // preservando a causa original para diagnóstico.
+            throw new PagamentoRecusadoException(
+                    processador.getDescricao(), total, e);
         }
-        return aprovado;
     }
 
     public BigDecimal calcularValorTotal() {
@@ -62,27 +95,12 @@ public class Pedido {
         return total;
     }
 
-    public String getNumero() {
-        return numero;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
+    public String getNumero() { return numero; }
+    public Cliente getCliente() { return cliente; }
     public List<ItemPedido> getItens() {
         return Collections.unmodifiableList(itens);
     }
-
-    public ProcessadorPagamento getFormaPagamento() {
-        return formaPagamento;
-    }
-
-    public SituacaoDoPedido getSituacao() {
-        return situacao;
-    }
-
-    public String getComprovante() {
-        return comprovante;
-    }
+    public ProcessadorPagamento getFormaPagamento() { return formaPagamento; }
+    public SituacaoDoPedido getSituacao() { return situacao; }
+    public String getComprovante() { return comprovante; }
 }

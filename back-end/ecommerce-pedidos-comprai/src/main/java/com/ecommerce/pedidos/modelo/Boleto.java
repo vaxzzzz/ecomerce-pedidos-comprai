@@ -1,5 +1,6 @@
 package com.ecommerce.pedidos.modelo;
 
+import com.ecommerce.pedidos.util.Validador;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -11,27 +12,26 @@ public class Boleto extends FormaPagamento {
         setCodigoDeBarras(codigoDeBarras);
     }
 
-    public String getCodigoDeBarras() {
-        return codigoDeBarras;
-    }
+    public String getCodigoDeBarras() { return codigoDeBarras; }
 
     public void setCodigoDeBarras(String codigoDeBarras) {
-        this.codigoDeBarras = codigoDeBarras;
+        this.codigoDeBarras =
+                Validador.somenteNumeros(codigoDeBarras, "Código de barras");
     }
 
     public boolean isVencido() {
-        Date hoje = new Date();
-        return hoje.after(getDataDeVencimento());
+        return new Date().after(getDataDeVencimento());
     }
 
     @Override
     public boolean processar(BigDecimal valor) {
         if (isVencido()) {
-            System.out.println("Pagamento recusado: O boleto já está vencido.");
+            System.out.println("Pagamento recusado: o boleto está vencido.");
             return false;
         }
-
-        System.out.println("Processando pagamento via boleto. Código de barras: " + codigoDeBarras);
+        System.out.println(
+                "Processando pagamento via boleto. Código de barras: "
+                        + codigoDeBarras);
         return true;
     }
 

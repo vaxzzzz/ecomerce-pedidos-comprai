@@ -1,13 +1,15 @@
 package com.ecommerce.pedidos.modelo;
 
 import com.ecommerce.pedidos.modelo.pagamento.ProcessadorPagamento;
+import com.ecommerce.pedidos.util.Validador;
 import java.math.BigDecimal;
 
 public class Dinheiro implements ProcessadorPagamento {
     private final BigDecimal valorRecebido;
 
     public Dinheiro(BigDecimal valorRecebido) {
-        this.valorRecebido = valorRecebido;
+        this.valorRecebido =
+                Validador.valorPositivo(valorRecebido, "Valor recebido");
     }
 
     @Override
@@ -26,12 +28,8 @@ public class Dinheiro implements ProcessadorPagamento {
     }
 
     public BigDecimal calcularTroco(BigDecimal valorDaCompra) {
+        Validador.valorPositivo(valorDaCompra, "Valor da compra");
         BigDecimal troco = valorRecebido.subtract(valorDaCompra);
-
-        if (troco.compareTo(BigDecimal.ZERO) < 0) {
-            return BigDecimal.ZERO;
-        }
-
-        return troco;
+        return troco.compareTo(BigDecimal.ZERO) < 0 ? BigDecimal.ZERO : troco;
     }
 }

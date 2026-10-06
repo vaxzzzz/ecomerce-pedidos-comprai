@@ -1,5 +1,6 @@
 package com.ecommerce.pedidos.modelo;
 
+import com.ecommerce.pedidos.util.Validador;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Date;
@@ -12,28 +13,26 @@ public class CartaoCredito extends FormaPagamento {
         setNumeroDoCartao(numeroDoCartao);
     }
 
-    public String getNumeroDoCartao() {
-        return numeroDoCartao;
-    }
+    public String getNumeroDoCartao() { return numeroDoCartao; }
 
     public void setNumeroDoCartao(String numeroDoCartao) {
-        this.numeroDoCartao = numeroDoCartao;
+        String numero = Validador.somenteNumeros(numeroDoCartao, "Número do cartão");
+        if (numero.length() < 13 || numero.length() > 19) {
+            throw new IllegalArgumentException(
+                    "Número do cartão deve conter entre 13 e 19 dígitos.");
+        }
+        this.numeroDoCartao = numero;
     }
 
     @Override
     public boolean processar(BigDecimal valor) {
-        // Aqui vai a lógica de comunicação com a operadora de cartão
         System.out.println("Processando " + valor + " no cartão: " + numeroDoCartao);
         return true;
     }
 
     @Override
     public String getComprovante() {
-        // Exemplo: pegando os últimos 4 dígitos do cartão para o comprovante
-        String ultimosDigitos = numeroDoCartao.length() > 4
-                ? numeroDoCartao.substring(numeroDoCartao.length() - 4)
-                : numeroDoCartao;
-
+        String ultimosDigitos = numeroDoCartao.substring(numeroDoCartao.length() - 4);
         return "Comprovante gerado com sucesso. Cartão final: " + ultimosDigitos;
     }
 
@@ -43,12 +42,8 @@ public class CartaoCredito extends FormaPagamento {
     }
 
     public BigDecimal calcularValorParcela(int quantidadeParcelas) {
-        if (quantidadeParcelas <= 0) {
-            throw new IllegalArgumentException("A quantidade de parcelas deve ser maior que zero.");
-        }
-
-        BigDecimal valorTotal = getValor();
-
-        return valorTotal.divide(new BigDecimal(quantidadeParcelas), 2, RoundingMode.HALF_UP);
+        Validador.quantidadePositiva(quantidadeParcelas, "Quantidade de parcelas");
+        return getValor().divide(
+                new BigDecimal(quantidadeParcelas), 2, RoundingMode.HALF_UP);
     }
 }

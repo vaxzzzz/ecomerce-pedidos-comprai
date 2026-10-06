@@ -1,5 +1,7 @@
 package com.ecommerce.pedidos.modelo;
 
+import com.ecommerce.pedidos.util.Validador;
+
 public class Cliente extends Pessoa {
     private String email;
     private String telefone;
@@ -12,36 +14,22 @@ public class Cliente extends Pessoa {
         setEndereco(endereco);
     }
 
-    public String getEmail() {
-        return email;
-    }
+    public String getEmail() { return email; }
 
     public void setEmail(String email) {
-        if (email == null || email.isBlank()) {
-            throw new IllegalArgumentException("E-mail é obrigatório");
-        }
-
-        if (!email.contains("@")) {
-            throw new IllegalArgumentException("E-mail deve conter @");
-        }
-
-        this.email = email.trim();
+        this.email = Validador.email(email);
     }
 
-    public String getTelefone() {
-        return telefone;
-    }
+    public String getTelefone() { return telefone; }
 
     public void setTelefone(String telefone) {
-        this.telefone = telefone;
+        this.telefone = Validador.textoObrigatorio(telefone, "Telefone");
     }
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
+    public Endereco getEndereco() { return endereco; }
 
     public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+        this.endereco = Validador.naoNulo(endereco, "Endereço");
     }
 
     @Override

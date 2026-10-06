@@ -1,5 +1,8 @@
 package com.ecommerce.pedidos.modelo;
 
+import com.ecommerce.pedidos.excecao.EstoqueInsuficienteException;
+import com.ecommerce.pedidos.util.Validador;
+
 public class Produto {
     private String codigo;
     private String nome;
@@ -9,7 +12,7 @@ public class Produto {
     private boolean ativo;
 
     public Produto() {
-        this.ativo = true;
+        this("SEM-CODIGO", "Produto sem nome", "Produto sem descricao", 0.0, 0);
     }
 
     public Produto(String codigo, String nome, String descricao, double preco, int estoque) {
@@ -21,76 +24,49 @@ public class Produto {
         this.ativo = true;
     }
 
-    public String getCodigo() {
-        return codigo;
-    }
-
+    public String getCodigo() { return codigo; }
     public void setCodigo(String codigo) {
-        if (codigo == null || codigo.isBlank()) {
-            throw new IllegalArgumentException("O código não pode ser vazio.");
-        }
-        this.codigo = codigo;
+        this.codigo = Validador.textoObrigatorio(codigo, "Código");
     }
 
-    public String getNome() {
-        return nome;
-    }
-
+    public String getNome() { return nome; }
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome = Validador.textoObrigatorio(nome, "Nome do produto");
     }
 
-    public String getDescricao() {
-        return descricao;
-    }
-
+    public String getDescricao() { return descricao; }
     public void setDescricao(String descricao) {
-        this.descricao = descricao;
+        this.descricao = Validador.textoObrigatorio(descricao, "Descrição");
     }
 
-    public double getPreco() {
-        return preco;
-    }
-
+    public double getPreco() { return preco; }
     public void setPreco(double preco) {
-        if (preco < 0) {
-            throw new IllegalArgumentException("Preço não pode ser negativo: " + preco);
-        }
-        this.preco = preco;
+        this.preco = Validador.precoNaoNegativo(preco, "Preço");
     }
 
-    public int getQuantidadeEmEstoque() {
-        return quantidadeEmEstoque;
-    }
-
+    public int getQuantidadeEmEstoque() { return quantidadeEmEstoque; }
     public void setQuantidadeEmEstoque(int quantidade) {
-        if (quantidade < 0) {
-            throw new IllegalArgumentException("Estoque não pode ser negativo: " + quantidade);
-        }
-        this.quantidadeEmEstoque = quantidade;
+        this.quantidadeEmEstoque =
+                Validador.quantidadeNaoNegativa(quantidade, "Estoque");
     }
 
-    public boolean isAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
-    }
+    public boolean isAtivo() { return ativo; }
+    public void setAtivo(boolean ativo) { this.ativo = ativo; }
 
     public boolean temEstoqueDisponivel(int quantidadeDesejada) {
+        Validador.quantidadePositiva(quantidadeDesejada, "Quantidade");
         return ativo && this.quantidadeEmEstoque >= quantidadeDesejada;
     }
 
-    public void baixarEstoque(int quantidade) {
-        if (quantidade <= 0) {
-            throw new IllegalArgumentException("Quantidade deve ser positiva");
-        }
+    public void baixarEstoque(int quantidade) throws EstoqueInsuficienteException {
+        Validador.quantidadePositiva(quantidade, "Quantidade");
+
         if (quantidade > quantidadeEmEstoque) {
-            throw new IllegalArgumentException(
-                    "Estoque insuficiente. Disponível: " + quantidadeEmEstoque);
+            throw new EstoqueInsuficienteException(
+                    codigo, quantidade, quantidadeEmEstoque);
         }
-        this.quantidadeEmEstoque = this.quantidadeEmEstoque - quantidade;
+
+        this.quantidadeEmEstoque -= quantidade;
     }
 
     @Override
