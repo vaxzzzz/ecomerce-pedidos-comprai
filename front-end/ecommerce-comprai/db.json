@@ -1,0 +1,68 @@
+{
+  "produtos": [
+    {
+      "id": "1",
+      "name": "Notebook Lenovo",
+      "description": "Notebook ideal para estudos, trabalho e programação.",
+      "category": "Eletrônicos",
+      "price": 3499.9,
+      "stock": 10,
+      "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=70"
+    },
+    {
+      "id": "2",
+      "name": "Mouse Gamer",
+      "description": "Mouse gamer com iluminação RGB e alta precisão.",
+      "category": "Periféricos",
+      "price": 149.9,
+      "stock": 25,
+      "image": "https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=600&q=70"
+    },
+    {
+      "id": "3",
+      "name": "Teclado Mecânico",
+      "description": "Teclado mecânico para jogos e produtividade.",
+      "category": "Periféricos",
+      "price": 299.9,
+      "stock": 15,
+      "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=70"
+    },
+    {
+      "id": "4",
+      "name": "Monitor 24 Polegadas",
+      "description": "Monitor Full HD de 24 polegadas.",
+      "category": "Eletrônicos",
+      "price": 899.9,
+      "stock": 8,
+      "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=70"
+    }
+  ],
+  "clientes": [
+    {
+      "id": "1",
+      "name": "Maria Silva",
+      "email": "maria.silva@email.com",
+      "cpf": "529.982.247-25",
+      "phone": "(16) 99999-1234",
+      "zipCode": "13560-000",
+      "street": "Rua das Flores",
+      "number": "100",
+      "city": "São Carlos",
+      "state": "SP"
+    },
+    {
+      "id": "2",
+      "name": "João Pereira",
+      "email": "joao.pereira@email.com",
+      "cpf": "111.444.777-35",
+      "phone": "(11) 98888-4321",
+      "zipCode": "01310-100",
+      "street": "Avenida Paulista",
+      "number": "1000",
+      "city": "São Paulo",
+      "state": "SP"
+    }
+  ],
+  "pedidos": [],
+  "pagamentos": []
+}

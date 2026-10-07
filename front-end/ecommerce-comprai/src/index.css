@@ -1,0 +1,133 @@
+body {
+    margin: 0;
+    background-color: #f8f9fa;
+    color: #212529;
+    font-family: Arial, sans-serif;
+}
+
+.hero-section {
+    background: linear-gradient(
+        135deg,
+        #e9f2ff,
+        #ffffff
+    );
+}
+
+.product-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    height: 220px;
+    object-fit: cover;
+}
+
+.feature-card {
+    transition: transform 0.2s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+}
+
+button,
+a {
+    transition: all 0.2s ease;
+}
+
+:focus-visible {
+    outline: 3px solid #0d6efd;
+    outline-offset: 3px;
+}
+/* ---------- Accessibility: skip link (visible only when focused) ---------- */
+.skip-link {
+    position: absolute;
+    left: 0.5rem;
+    top: -4rem;
+    z-index: 2000;
+    padding: 0.5rem 1rem;
+    background: #0d6efd;
+    color: #fff;
+    border-radius: 0.25rem;
+}
+
+.skip-link:focus {
+    top: 0.5rem;
+}
+
+main:focus {
+    outline: none;
+}
+
+/* ---------- Order timeline ---------- */
+.order-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.order-timeline-step {
+    position: relative;
+    padding-left: 2.5rem;
+    color: #6c757d;
+}
+
+.order-timeline-step.is-done {
+    color: #212529;
+}
+
+/* Vertical line joining the dots */
+.order-timeline-step:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 0.7rem;
+    top: 1.6rem;
+    bottom: -1.25rem;
+    width: 2px;
+    background: #dee2e6;
+}
+
+.order-timeline-step.is-done:not(:last-child)::before {
+    background: #198754;
+}
+
+.order-timeline-dot {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid #dee2e6;
+    background: #fff;
+    font-size: 0.8rem;
+}
+
+.order-timeline-step.is-done .order-timeline-dot {
+    background: #198754;
+    border-color: #198754;
+    color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
+
+/* ---------- Quantity stepper ---------- */
+.quantity-stepper {
+    width: 9rem;
+}
+
+.quantity-value {
+    min-width: 3rem;
+    background: #fff;
+}
